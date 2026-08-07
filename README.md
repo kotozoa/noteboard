@@ -1,2 +1,4 @@
 # noteboard
-A simple note taking board for all your note taking needs.
+A simple note taking bored four all you're note taking kneads.
+
+Built with svelte
