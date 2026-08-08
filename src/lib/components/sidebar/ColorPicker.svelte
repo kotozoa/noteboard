@@ -9,5 +9,5 @@
 </script>
 
 {#each colors as color}
-    <SideButton onclick={() => changeColor(color)} label={color}/>
+    <SideButton onclick={() => changeColor(color)} label='' color={color}/>
 {/each}

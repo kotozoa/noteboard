@@ -1,8 +1,8 @@
 <script>
-    let {onclick, label = ''} = $props();
+    let {onclick, label = '', color='beige'} = $props();
 </script>
 
-<button onclick={onclick}>{label}</button>
+<button onclick={onclick} style='background-color: {color};'>{label}</button>
 
 <style>
     button {
@@ -13,7 +13,6 @@
         margin: 4px;
         border-radius: 6px;
         border: none;
-        background-color: beige;
         cursor: pointer;
     }
 </style>
