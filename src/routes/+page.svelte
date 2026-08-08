@@ -1,7 +1,9 @@
 <script>
     import Notepad from './Notepad.svelte';
     import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
+
     // Handle colors
+    let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
     let selectedColor = $state('palegoldenrod');
 
     function changeColor(color) {
@@ -11,15 +13,24 @@
     let notes = $state([{ size: 100, text: "Sample Note", bgcolor: "palegoldenrod" }]);
 
     function addNote(){
-        notes.push({
-          size: 100,
-          text: "New Note",
-          bgcolor: selectedColor
-        });
+        if (selectedColor === 'random'){
+            notes.push({
+                size: 100,
+                text: "New Note",
+                bgcolor: colors[Math.floor(Math.random() * colors.length)]
+            });
+        }
+        else{
+            notes.push({
+                size: 100,
+                text: "New Note",
+                bgcolor: selectedColor
+            });
+        }
     }
 </script>
 
-<SidePanel {addNote} {changeColor} />
+<SidePanel {addNote} {changeColor} {colors}/>
 
 <div class="notepad-container">
     {#each notes as note}

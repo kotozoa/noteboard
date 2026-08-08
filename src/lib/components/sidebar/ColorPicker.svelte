@@ -1,13 +1,11 @@
 <script>
     import SideButton from "./SideButton.svelte";
 
-    let {changeColor} = $props();
-
-    // Default colors
-    let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
+    let {changeColor, colors} = $props();
 
 </script>
 
+<SideButton onclick={() => changeColor('random')} label='?'/>
 {#each colors as color}
     <SideButton onclick={() => changeColor(color)} label='' color={color}/>
 {/each}
