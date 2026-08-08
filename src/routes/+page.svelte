@@ -1,7 +1,12 @@
 <script>
     import Notepad from './Notepad.svelte';
     import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
+    // Handle colors
+    let selectedColor = $state('palegoldenrod');
 
+    function changeColor(color) {
+        selectedColor = color;
+    }
     // Handle notes
     let notes = $state([{ size: 100, text: "Sample Note", bgcolor: "palegoldenrod" }]);
 
@@ -9,12 +14,13 @@
         notes.push({
           size: 100,
           text: "New Note",
-          bgcolor: 'palegoldenrod'
+          bgcolor: selectedColor
         });
     }
 </script>
 
-<SidePanel {addNote} />
+<SidePanel {addNote} {changeColor} />
+
 <div class="notepad-container">
     {#each notes as note}
         <Notepad
