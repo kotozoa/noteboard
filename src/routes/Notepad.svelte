@@ -1,6 +1,6 @@
 <script>
     import { fade } from 'svelte/transition';
-    let {size = 100, padding = 10, text = "Text here", bgcolor = 'palegoldenrod'} = $props();
+    let {size = 100, text = "Text here", bgcolor = 'palegoldenrod'} = $props();
 
 </script>
 
@@ -9,13 +9,15 @@
     min-height: {size}px;
     max-width: {size}px;
     max-height: {size}px;
-    padding: {padding}px;
 ">
     <textarea style="background-color: {bgcolor};"
         placeholder={text}></textarea>
 </div>
 
 <style>
+    .note{
+        padding: 10px
+    }
     textarea {
         width: 100%;
         height: 100%;
