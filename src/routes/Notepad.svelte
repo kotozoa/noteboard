@@ -2,6 +2,10 @@
     import { fade } from 'svelte/transition';
     let {size = 100, text = "Text here", bgcolor = 'palegoldenrod'} = $props();
 
+    /*
+    TODO:
+    - Max amount of text/lines constrained to note size
+    */
 </script>
 
 <div in:fade={{ duration: 400 }} class="note" style="

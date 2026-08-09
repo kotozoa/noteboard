@@ -6,13 +6,15 @@
 
 <style>
     button {
-
-        align-self: start;
-        width: 80%;
+        width: 98%;
         aspect-ratio: 1 / 1;
-        margin: 4px;
         border-radius: 6px;
         border: none;
         cursor: pointer;
+    }
+    button:hover{
+        border-color: #a34365;
+        border-width: 3px;
+        border-style: solid;
     }
 </style>

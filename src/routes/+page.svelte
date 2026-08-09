@@ -4,7 +4,7 @@
 
     // Handle colors
     let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
-    let selectedColor = $state('palegoldenrod');
+    let selectedColor = $state('random');
 
     function changeColor(color) {
         selectedColor = color;

@@ -3,9 +3,15 @@
 
     let {changeColor, colors} = $props();
 
+    /*
+    TODO
+    - Add a current color selection indicator
+    - Either a simple border or a little pointer arrow
+    - Animate with sliding (?)
+    */
 </script>
 
 <SideButton onclick={() => changeColor('random')} label='?'/>
 {#each colors as color}
-    <SideButton onclick={() => changeColor(color)} label='' color={color}/>
+    <SideButton onclick={() => changeColor(color)} label='' {color}/>
 {/each}
