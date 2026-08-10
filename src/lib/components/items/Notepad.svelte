@@ -13,6 +13,8 @@
     min-height: {size}px;
     max-width: {size}px;
     max-height: {size}px;
+    left: calc(50vw - {size}px / 2);
+    top: calc(50vh - {size}px / 2);
 ">
     <textarea style="background-color: {bgcolor};"
         placeholder={text}></textarea>

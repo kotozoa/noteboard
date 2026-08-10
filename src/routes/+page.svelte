@@ -2,6 +2,18 @@
     import Notepad from '$lib/components/items/Notepad.svelte';
     import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
 
+    let states = ['select', 'edit', 'delete'];
+
+    // Operations
+    function selectNote() {
+    }
+    function editNote() {
+
+    }
+    function deleteNote() {
+
+    }
+
     // Handle colors
     let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
     let selectedColor = $state('random');
@@ -40,7 +52,7 @@
     }
 </script>
 
-<SidePanel {addNote} {changeColor} {colors}/>
+<SidePanel {addNote} {changeColor} {colors} {selectNote} {editNote} {deleteNote} />
 
 <!-- TODO: Change container to allow notes to move anywhere within the container-->
 <div class="notepad-container">
@@ -64,10 +76,5 @@
         background-color: black;
         width: 100vw;
         height: 100vh;
-        display: flex;
-        align-content: flex-start;
-        align-items: flex-end;
-        flex-direction: column;
-        flex-wrap: wrap;
     }
 </style>
