@@ -1,5 +1,5 @@
 <script>
-    import Notepad from './Notepad.svelte';
+    import Notepad from '$lib/components/items/Notepad.svelte';
     import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
 
     // Handle colors
@@ -12,6 +12,16 @@
     // Handle notes
     let notes = $state([{ size: 100, text: "Sample Note", bgcolor: "palegoldenrod" }]);
 
+    /* TODO:
+    - Change function to addnote to the center of note container and a small random x,y offset for visual variety
+    - completely rehaul style, make more visually unique
+      - custom (dynamic?) background
+      - notes can be opaque/frosted glass-like with colors more in line with a theme
+      - darker theme with cold colors?
+      - side panel styled with a similar idea
+      - think of page layout/balancing ui elements
+
+    */
     function addNote(){
         if (selectedColor === 'random'){
             notes.push({
@@ -32,6 +42,7 @@
 
 <SidePanel {addNote} {changeColor} {colors}/>
 
+<!-- TODO: Change container to allow notes to move anywhere within the container-->
 <div class="notepad-container">
     {#each notes as note}
         <Notepad
@@ -55,6 +66,7 @@
         height: 100vh;
         display: flex;
         align-content: flex-start;
+        align-items: flex-end;
         flex-direction: column;
         flex-wrap: wrap;
     }

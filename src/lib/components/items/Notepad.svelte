@@ -20,15 +20,21 @@
 
 <style>
     .note{
-        padding: 10px
+        position: absolute;
+        margin: 10px;
     }
     textarea {
+        position: absolute;
         width: 100%;
         height: 100%;
         resize: none;
+        padding: 6px;
+        box-sizing: border-box;
         border-radius: 2.5%;
         overflow: hidden;
         border: none;
+
+
     }
     textarea::placeholder {
         color: black;
