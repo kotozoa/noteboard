@@ -2,22 +2,55 @@
     import { fade } from 'svelte/transition';
     let {size = 100, text = "Text here", bgcolor = 'palegoldenrod'} = $props();
 
+    let editing = $state(false);
+
+    function startEditing() {
+        console.log('editing');
+        editing = true;
+    }
+
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
+          startEditing();
+        }
+    }
+    function startDragging(event) {
+      //TODO: track mouse movement
+    }
     /*
     TODO:
     - Max amount of text/lines constrained to note size
+    - Stop editing mode when clicking outside the textarea
+    - Make editing mode visibly distinct and remove formatting when not in editing mode
+    - Fix problem where you must click 3 times to start editing
     */
 </script>
 
-<div in:fade={{ duration: 400 }} class="note" style="
-    min-width: {size}px;
-    min-height: {size}px;
-    max-width: {size}px;
-    max-height: {size}px;
-    left: calc(50vw - {size}px / 2);
-    top: calc(50vh - {size}px / 2);
+<div
+    in:fade={{ duration: 400 }}
+    class="note"
+    role="button"
+    tabindex="0"
+    style="
+        width: {size}px;
+        height: {size}px;
+        left: calc(50vw - {size}px / 2);
+        top: calc(50vh - {size}px / 2);
 ">
-    <textarea style="background-color: {bgcolor};"
-        placeholder={text}></textarea>
+    {#if editing}
+        <textarea
+            bind:value={text}
+            style="background-color: {bgcolor};"
+        ></textarea>
+    {:else}
+        <textarea
+            readonly
+            ondblclick={startEditing}
+            onkeydown={handleKeyDown}
+            style="background-color: {bgcolor};"
+            placeholder={text}
+        ></textarea>
+    {/if}
 </div>
 
 <style>
@@ -35,7 +68,6 @@
         border-radius: 2.5%;
         overflow: hidden;
         border: none;
-
 
     }
     textarea::placeholder {
