@@ -1,8 +1,9 @@
 <script>
     import { fade } from 'svelte/transition';
-    let {size = 100, text = "Text here", bgcolor = 'palegoldenrod'} = $props();
+    let {size = 100, placeholder = "Text here", bgcolor = 'palegoldenrod'} = $props();
 
     let editing = $state(false);
+    let text = $state('');
 
     function startEditing() {
         console.log('editing');
@@ -21,7 +22,6 @@
     TODO:
     - Max amount of text/lines constrained to note size
     - Stop editing mode when clicking outside the textarea
-    - Make editing mode visibly distinct and remove formatting when not in editing mode
     - Fix problem where you must click 3 times to start editing
     */
 </script>
@@ -44,12 +44,13 @@
         ></textarea>
     {:else}
         <textarea
+            class="read-only"
             readonly
-            ondblclick={startEditing}
+            onclick={startEditing}
             onkeydown={handleKeyDown}
             style="background-color: {bgcolor};"
-            placeholder={text}
-        ></textarea>
+            placeholder={placeholder}
+        >{text}</textarea>
     {/if}
 </div>
 
@@ -73,6 +74,10 @@
     textarea::placeholder {
         color: black;
         opacity: 30%;
+    }
+    .read-only:focus{
+        outline: none;
+        box-shadow: none;
     }
 
 </style>
