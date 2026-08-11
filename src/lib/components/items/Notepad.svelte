@@ -80,5 +80,9 @@
         box-shadow: none;
         caret-color: transparent;
     }
+    textarea:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white;
+    }
 
 </style>
