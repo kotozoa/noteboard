@@ -1,14 +1,21 @@
 <script>
     import { fade } from 'svelte/transition';
-    let {size = 100, placeholder = "Text here", bgcolor = 'palegoldenrod'} = $props();
+    let {size = 100, placeholder = "New note", bgcolor = 'palegoldenrod'} = $props();
 
-    let editing = $state(false);
+    // Textarea states
+    let textarea;
     let text = $state('');
+    let editing = $state(false);
 
     function startEditing() {
-        console.log('editing');
         editing = true;
+        setTimeout(() => textarea?.focus());
     }
+
+    function stopEditing() {
+        editing = false;
+    }
+
 
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
@@ -21,8 +28,7 @@
     /*
     TODO:
     - Max amount of text/lines constrained to note size
-    - Stop editing mode when clicking outside the textarea
-    - Fix problem where you must click 3 times to start editing
+    - Make caret blink again
     */
 </script>
 
@@ -37,21 +43,15 @@
         left: calc(50vw - {size}px / 2);
         top: calc(50vh - {size}px / 2);
 ">
-    {#if editing}
-        <textarea
-            bind:value={text}
-            style="background-color: {bgcolor};"
-        ></textarea>
-    {:else}
-        <textarea
-            class="read-only"
-            readonly
-            onclick={startEditing}
-            onkeydown={handleKeyDown}
-            style="background-color: {bgcolor};"
-            placeholder={placeholder}
-        >{text}</textarea>
-    {/if}
+    <textarea
+        bind:this={textarea}
+        bind:value={text}
+        readonly={!editing}
+        ondblclick={startEditing}
+        onblur={stopEditing}
+        placeholder={placeholder}
+        style="background-color: {bgcolor};"
+    ></textarea>
 </div>
 
 <style>
@@ -75,9 +75,10 @@
         color: black;
         opacity: 30%;
     }
-    .read-only:focus{
+    textarea:read-only{
         outline: none;
         box-shadow: none;
+        caret-color: transparent;
     }
 
 </style>

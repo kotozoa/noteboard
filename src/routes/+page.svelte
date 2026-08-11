@@ -19,7 +19,7 @@
         console.log('Selected color: ', selectedColor)
     }
     // Handle notes
-    let notes = $state([{ size: 100, text: "Sample Note", bgcolor: "palegoldenrod" }]);
+    let notes = $state([{ size: 100, bgcolor: "palegoldenrod" }]);
 
     /* TODO:
     - Change function to addnote to the center of note container and a small random x,y offset for visual variety
@@ -35,18 +35,24 @@
         if (selectedColor === 'random'){
             notes.push({
                 size: 100,
-                text: "New Note",
+                placeholder: "New Note",
                 bgcolor: colors[Math.floor(Math.random() * colors.length)]
             });
         }
         else{
             notes.push({
                 size: 100,
-                text: "New Note",
+                placeholder: "New Note",
                 bgcolor: selectedColor
             });
         }
     }
+
+    /*
+    let noteCount = $state(notes.length);
+    $effect(() => {
+        noteCount = notes.length;
+    });*/
 </script>
 
 <SidePanel {addNote} {changeColor} {colors} {setMode}/>
