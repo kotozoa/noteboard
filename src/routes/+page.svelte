@@ -70,5 +70,25 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
+      background-color: black;
+    }
+    .editor {
+        width: 100%;
+        height: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        padding: 20px;
+        gap: 20px;
+        box-sizing: border-box;
+        background-color:grey;
     }
 </style>
