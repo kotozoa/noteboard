@@ -53,6 +53,8 @@
     - Max amount of text/lines constrained to note size
     - Make caret blink again
     - Caret doesnt appear when editing when double clicked, but appears when clicked again
+    - Cursor to move when dragging or hovering
+    - Fix highlight text when dragging and no drag when clicked once
     */
 </script>
 

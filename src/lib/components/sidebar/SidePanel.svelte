@@ -2,12 +2,12 @@
     import ColorPicker from './ColorPicker.svelte';
     import SideButton from './SideButton.svelte';
 
-    let { addNote, changeColor, colors, setMode } = $props();
+    let { addNote, changeColor, colors} = $props();
 </script>
 
 <aside class="side-panel">
     <SideButton onclick={addNote} label="+" />
-    <SideButton onclick={() => setMode('delete')} label="-" />
+    <SideButton onclick={() => {}} label="-" />
 
     <ColorPicker {changeColor} {colors} />
 </aside>
