@@ -1,6 +1,32 @@
 <script>
     import { fade } from 'svelte/transition';
-    let {size = 100, placeholder = "New note", bgcolor = 'palegoldenrod'} = $props();
+    let {
+      x = 0,
+      y = 0,
+      size = 100,
+      placeholder = "New note",
+      bgcolor = 'palegoldenrod',
+    } = $props();
+
+    // Movement logic
+    let position = $state({ x, y });
+    let moving = false;
+
+    function onMouseDown() {
+        if (editing) return;
+        moving = true;
+    }
+
+   	function onMouseUp() {
+		moving = false;
+	}
+
+    function onMouseMove(e) {
+        if (!moving) return;
+        position.x += e.movementX;
+        position.y += e.movementY;
+    }
+
 
     // Textarea states
     let textarea;
@@ -16,19 +42,17 @@
         editing = false;
     }
 
-
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
           startEditing();
         }
     }
-    function startDragging(event) {
-      //TODO: track mouse movement
-    }
+
     /*
     TODO:
     - Max amount of text/lines constrained to note size
     - Make caret blink again
+    - Caret doesnt appear when editing when double clicked, but appears when clicked again
     */
 </script>
 
@@ -40,19 +64,22 @@
     style="
         width: {size}px;
         height: {size}px;
-        left: calc(50vw - {size}px / 2);
-        top: calc(50vh - {size}px / 2);
+        left: {position.x}px;
+        top: {position.y}px;
 ">
     <textarea
         bind:this={textarea}
         bind:value={text}
         readonly={!editing}
         ondblclick={startEditing}
+        onmousedown={onMouseDown}
         onblur={stopEditing}
         placeholder={placeholder}
         style="background-color: {bgcolor};"
     ></textarea>
 </div>
+
+<svelte:window on:mouseup={onMouseUp} on:mousemove={onMouseMove} />
 
 <style>
     .note{

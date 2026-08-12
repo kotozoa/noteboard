@@ -19,7 +19,13 @@
         console.log('Selected color: ', selectedColor)
     }
     // Handle notes
-    let notes = $state([{ size: 100, bgcolor: "palegoldenrod" }]);
+    let notes = $state([{
+      x: 200,
+      y: 200,
+      size: 100,
+      placeholder: "Sample note",
+      bgcolor: "palegoldenrod",
+    }]);
 
     /* TODO:
     - Change function to addnote to the center of note container and a small random x,y offset for visual variety
@@ -34,6 +40,8 @@
     function addNote(){
         if (selectedColor === 'random'){
             notes.push({
+                x: 200,
+                y: 200,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: colors[Math.floor(Math.random() * colors.length)]
@@ -41,6 +49,8 @@
         }
         else{
             notes.push({
+                x: 200,
+                y: 200,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: selectedColor
@@ -61,10 +71,11 @@
 <div class="notepad-container">
     {#each notes as note}
         <Notepad
+            x={note.x}
+            y={note.y}
             size={note.size}
-            text={note.text}
+            placeholder={note.placeholder}
             bgcolor={note.bgcolor}
-            mode={currentMode}
         />
     {/each}
 </div>
