@@ -1,14 +1,7 @@
 <script>
     import Notepad from '$lib/components/items/Notepad.svelte';
+    import NoteArea from '$lib/components/items/NoteArea.svelte';
     import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
-
-    let currentMode = $state('move');
-
-    // Operations
-    function setMode(mode) {
-        currentMode = mode;
-        console.log('Current mode: ', currentMode)
-    }
 
     // Handle colors
     let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
@@ -18,6 +11,7 @@
         selectedColor = color;
         console.log('Selected color: ', selectedColor)
     }
+
     // Handle notes
     let notes = $state([{
       x: 200,
@@ -27,16 +21,6 @@
       bgcolor: "palegoldenrod",
     }]);
 
-    /* TODO:
-    - Change function to addnote to the center of note container and a small random x,y offset for visual variety
-    - completely rehaul style, make more visually unique
-      - custom (dynamic?) background
-      - notes can be opaque/frosted glass-like with colors more in line with a theme
-      - darker theme with cold colors?
-      - side panel styled with a similar idea
-      - think of page layout/balancing ui elements
-
-    */
     function addNote(){
         if (selectedColor === 'random'){
             notes.push({
@@ -57,6 +41,16 @@
             });
         }
     }
+    /* TODO:
+    - Change function to addnote to the center of note container and a small random x,y offset for visual variety
+    - completely rehaul style, make more visually unique
+      - custom (dynamic?) background
+      - notes can be opaque/frosted glass-like with colors more in line with a theme
+      - darker theme with cold colors?
+      - side panel styled with a similar idea
+      - think of page layout/balancing ui elements
+
+    */
 
     /*
     let noteCount = $state(notes.length);
@@ -65,19 +59,9 @@
     });*/
 </script>
 
-<SidePanel {addNote} {changeColor} {colors} {setMode}/>
-
-<!-- TODO: Change container to allow notes to move anywhere within the container-->
-<div class="notepad-container">
-    {#each notes as note}
-        <Notepad
-            x={note.x}
-            y={note.y}
-            size={note.size}
-            placeholder={note.placeholder}
-            bgcolor={note.bgcolor}
-        />
-    {/each}
+<div class="editor">
+    <SidePanel {addNote} {changeColor} {colors}/>
+    <NoteArea {notes}/>
 </div>
 
 <style>
@@ -86,10 +70,5 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
-    }
-    .notepad-container {
-        background-color: black;
-        width: 100vw;
-        height: 100vh;
     }
 </style>
