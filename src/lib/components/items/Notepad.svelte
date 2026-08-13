@@ -70,6 +70,7 @@
         top: {position.y}px;
 ">
     <textarea
+        class:editing={editing}
         bind:this={textarea}
         bind:value={text}
         readonly={!editing}
@@ -98,6 +99,7 @@
         border-radius: 2.5%;
         overflow: hidden;
         border: none;
+        cursor: move;
 
     }
     textarea::placeholder {
@@ -105,6 +107,7 @@
         opacity: 30%;
     }
     textarea:read-only{
+        cursor: move;
         outline: none;
         box-shadow: none;
         caret-color: transparent;
@@ -112,6 +115,9 @@
     textarea:focus-visible {
         outline: none;
         box-shadow: 0 0 0 2px white;
+    }
+    textarea.editing {
+        cursor: text;
     }
 
 </style>
