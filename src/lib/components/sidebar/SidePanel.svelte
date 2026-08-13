@@ -6,9 +6,7 @@
 </script>
 
 <aside class="side-panel">
-    <SideButton onclick={addNote} label="+" />
-    <SideButton onclick={() => {}} label="-" />
-
+    <SideButton onclick={addNote} label="+" ariaLabel="Add note" />
     <ColorPicker {changeColor} {colors} />
 </aside>
 

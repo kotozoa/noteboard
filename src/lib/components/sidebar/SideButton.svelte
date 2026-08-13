@@ -1,8 +1,8 @@
 <script>
-    let {onclick, label = '', color='beige'} = $props();
+    let {onclick, label = '', ariaLabel = '', color='beige'} = $props();
 </script>
 
-<button onclick={onclick} style='background-color: {color};'>{label}</button>
+<button {onclick} style='background-color: {color};' aria-label={ariaLabel}>{label}</button>
 
 <style>
     button {

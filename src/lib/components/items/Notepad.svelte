@@ -5,7 +5,7 @@
       y = 0,
       size = 100,
       placeholder = "New note",
-      bgcolor = 'palegoldenrod',
+      bgcolor = 'palegoldenrod'
     } = $props();
 
     // Movement logic
@@ -26,7 +26,6 @@
         position.x += e.movementX;
         position.y += e.movementY;
     }
-
 
     // Textarea states
     let textarea;
