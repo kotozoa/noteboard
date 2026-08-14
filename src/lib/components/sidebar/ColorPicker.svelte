@@ -11,7 +11,7 @@
     */
 </script>
 
-<SideButton onclick={() => changeColor('random')} label='?' ariaLabel="Random color" />
+<SideButton onclick={() => changeColor('random')} label='?' ariaLabel="Random color" tooltiptext="Random color" />
 {#each colors as color}
-    <SideButton onclick={() => changeColor(color)} label='' {color} ariaLabel={`${color}`} />
+    <SideButton onclick={() => changeColor(color)} label='' {color} ariaLabel={`${color}`} tooltiptext={`${color}`} />
 {/each}
