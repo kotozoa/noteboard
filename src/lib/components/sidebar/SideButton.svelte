@@ -13,13 +13,20 @@
     .tooltip {
         visibility: hidden;
         width: auto;
+        border-radius: 6px;
+        padding: 4px;
+
         background-color: black;
         color: #fff;
         text-align: center;
-        border-radius: 6px;
-        padding: 4px;
-        position: absolute;
+        white-space: nowrap;
+        overflow: hidden;
         z-index: 1;
+
+        position: absolute;
+        left: calc(100% + 4px);
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     button:hover .tooltip {
@@ -27,9 +34,12 @@
     }
 
     button {
+        position: relative;
+
         width: 98%;
         aspect-ratio: 1 / 1;
         border-radius: 6px;
+        box-sizing: border-box;
         border: none;
         cursor: pointer;
     }
