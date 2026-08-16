@@ -1,8 +1,21 @@
 <script>
-    let {onclick, label = '', ariaLabel = '', color='beige', tooltiptext = ''} = $props();
+    let {
+      onclick,
+      label = '',
+      ariaLabel = '',
+      color = 'beige',
+      tooltiptext = '',
+      active = false,
+    } = $props();
 </script>
 
-<button {onclick} style='background-color: {color};' aria-label={ariaLabel}>
+<button
+    {onclick}
+    style='background-color: {color};'
+    aria-label={ariaLabel}
+    class:active
+    aria-pressed={active}
+    >
     {label}
     <span class='tooltip'>
         {tooltiptext}
@@ -33,6 +46,12 @@
         visibility: visible;
     }
 
+    button.active {
+        border-width: 3px;
+        border-color: white;
+        border-style: solid;
+    }
+
     button {
         position: relative;
 
@@ -45,9 +64,7 @@
     }
 
     button:hover{
-        border-color: #a34365;
-        border-width: 3px;
-        border-style: solid;
+
     }
 
 </style>

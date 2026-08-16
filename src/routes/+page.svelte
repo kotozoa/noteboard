@@ -9,7 +9,7 @@
 
     function changeColor(color) {
         selectedColor = color;
-        console.log('Selected color: ', selectedColor)
+        //console.log('Selected color: ', selectedColor)
     }
 
     // Handle notes
@@ -60,7 +60,7 @@
 </script>
 
 <div class="editor">
-    <SidePanel {addNote} {changeColor} {colors}/>
+    <SidePanel {addNote} {changeColor} {colors} {selectedColor}/>
     <NoteArea {notes}/>
 </div>
 
