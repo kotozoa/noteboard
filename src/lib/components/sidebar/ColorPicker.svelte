@@ -8,6 +8,7 @@
     - Add a current color selection indicator
     - Either a simple border or a little pointer arrow
     - Animate with sliding (?)
+    - Add dropdown menu
     */
 </script>
 
