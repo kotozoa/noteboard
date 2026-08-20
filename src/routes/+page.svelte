@@ -24,8 +24,8 @@
     function addNote(){
         if (selectedColor === 'random'){
             notes.push({
-                x: 200,
-                y: 200,
+                x: 0,
+                y: 0,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: colors[Math.floor(Math.random() * colors.length)]
@@ -33,8 +33,8 @@
         }
         else{
             notes.push({
-                x: 200,
-                y: 200,
+                x: 0,
+                y: 0,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: selectedColor
