@@ -87,6 +87,7 @@
     .note{
         position: absolute;
         margin: 10px;
+        transform: translate(-50%, -50%);
     }
     textarea {
         position: absolute;
