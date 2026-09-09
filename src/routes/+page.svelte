@@ -55,13 +55,8 @@
         }
     }
     /* TODO:
-    - Change function to addnote to the center of note container and a small random x,y offset for visual variety
-    - completely rehaul style, make more visually unique
-      - custom (dynamic?) background
-      - notes can be opaque/frosted glass-like with colors more in line with a theme
-      - darker theme with cold colors?
-      - side panel styled with a similar idea
-      - think of page layout/balancing ui elements
+    - small random x,y offset addnote for visual variety
+    - just make it look pretty atp
 
     */
 

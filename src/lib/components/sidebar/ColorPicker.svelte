@@ -2,14 +2,6 @@
     import SideButton from "./SideButton.svelte";
 
     let {changeColor, colors, selectedColor} = $props();
-
-    /*
-    TODO
-    - Add a current color selection indicator
-    - Either a simple border or a little pointer arrow
-    - Animate with sliding (?)
-    - Add dropdown menu
-    */
 </script>
 
 <SideButton
