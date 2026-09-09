@@ -25,7 +25,5 @@
         position: relative;
         background-color: darkslategrey;
         border-radius: 24px;
-        width: 80vw;
-        height: 80vh;
     }
 </style>

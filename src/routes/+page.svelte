@@ -1,11 +1,30 @@
 <script>
     import Notepad from '$lib/components/items/Notepad.svelte';
     import NoteArea from '$lib/components/items/NoteArea.svelte';
-    import SidePanel from '$lib/components/sidebar/SidePanel.svelte'
+    import SidePanel from '$lib/components/sidebar/SidePanel.svelte';
+    import { onMount } from 'svelte';
 
     // Handle colors
     let colors = ['palegoldenrod', 'palevioletred', 'paleturquoise'];
     let selectedColor = $state('random');
+
+    // Notearea dimensions
+    let pageDims = { w: 0, h: 0 };
+    let noteAreaCenter = { x: 0, y: 0 };
+
+    let noteAreaViewportWidth = 80
+    let noteAreaViewportHeight = 80
+
+    onMount(() => {
+        pageDims.w = document.documentElement.clientWidth;
+        pageDims.h = document.documentElement.clientHeight;
+        console.log(pageDims);
+
+        noteAreaCenter.x = ((noteAreaViewportWidth / 100) * pageDims.w) / 2;
+        noteAreaCenter.y = ((noteAreaViewportHeight / 100) * pageDims.h) / 2;
+        console.log(noteAreaCenter);
+    });
+
 
     function changeColor(color) {
         selectedColor = color;
@@ -13,19 +32,13 @@
     }
 
     // Handle notes
-    let notes = $state([{
-      x: 200,
-      y: 200,
-      size: 100,
-      placeholder: "Sample note",
-      bgcolor: "palegoldenrod",
-    }]);
+    let notes = $state([]);
 
     function addNote(){
         if (selectedColor === 'random'){
             notes.push({
-                x: 0,
-                y: 0,
+                x: noteAreaCenter.x,
+                y: noteAreaCenter.y,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: colors[Math.floor(Math.random() * colors.length)]
@@ -33,8 +46,8 @@
         }
         else{
             notes.push({
-                x: 0,
-                y: 0,
+                x: noteAreaCenter.x,
+                y: noteAreaCenter.y,
                 size: 100,
                 placeholder: "New Note",
                 bgcolor: selectedColor
