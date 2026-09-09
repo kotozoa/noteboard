@@ -61,7 +61,7 @@
 
 <div class="editor">
     <SidePanel {addNote} {changeColor} {colors} {selectedColor}/>
-    <NoteArea {notes}/>
+    <NoteArea {notes} width={noteAreaViewportWidth} height={noteAreaViewportHeight}/>
 </div>
 
 <style>

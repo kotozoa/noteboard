@@ -1,10 +1,14 @@
 <script>
     import Notepad from '$lib/components/items/Notepad.svelte';
 
-    let { notes } = $props();
+    let { notes, width, height } = $props();
 </script>
 
-<div class="notepad-container">
+<div class="notepad-container"
+    style="
+    width: {width}vw;
+    height: {height}vh;
+    ">
     {#each notes as note}
         <Notepad
             x={note.x}
